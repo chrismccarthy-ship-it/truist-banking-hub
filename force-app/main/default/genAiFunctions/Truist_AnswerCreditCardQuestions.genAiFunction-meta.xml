@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Answers customer questions about Truist credit card offerings using grounded Knowledge Article content. Use this action when a customer asks about credit card features, rewards, fees, APR, travel benefits, or comparisons between Truist cards (Enjoy Cash, Enjoy Beyond, Enjoy Travel, Future). Always retrieve the relevant Knowledge Article(s) first via Knowledge Search, then pass the article body as KnowledgeContext.</description>
+    <masterLabel>Answer Credit Card Questions</masterLabel>
+    <functionType>EinsteinGptPromptTemplateGenerateText</functionType>
+    <inputs>
+        <apiName>KnowledgeContext</apiName>
+        <definition>The full text or relevant excerpt from the Truist Knowledge Article(s) about the credit card(s) being asked about. Retrieved via the Search Knowledge action before calling this function.</definition>
+        <masterLabel>Knowledge Context</masterLabel>
+        <required>true</required>
+        <dataType>Text</dataType>
+        <maxLength>4000</maxLength>
+    </inputs>
+    <inputs>
+        <apiName>CustomerQuestion</apiName>
+        <definition>The customer's verbatim question about Truist credit cards, as captured from the conversation context.</definition>
+        <masterLabel>Customer Question</masterLabel>
+        <required>true</required>
+        <dataType>Text</dataType>
+        <maxLength>1000</maxLength>
+    </inputs>
+    <outputs>
+        <apiName>AdvisorResponse</apiName>
+        <definition>The generated credit card advisory response to display to the customer.</definition>
+        <masterLabel>Advisor Response</masterLabel>
+        <dataType>Text</dataType>
+    </outputs>
+    <promptTemplateDeveloperName>Truist_CreditCard_QA_Advisor</promptTemplateDeveloperName>
+</GenAiFunction>

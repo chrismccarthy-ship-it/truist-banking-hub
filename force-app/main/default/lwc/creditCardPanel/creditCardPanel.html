@@ -1,0 +1,68 @@
+<template>
+    <div class="cc-panel">
+
+        <!-- Section header -->
+        <h3 class="cc-section-title">Find your card for every day.</h3>
+        <hr class="cc-divider" />
+
+        <!-- Enjoy Beyond Card -->
+        <div class="cc-card-row">
+            <!-- Card image placeholder -->
+            <div class="cc-card-image-wrap">
+                <div class="cc-card-mock cc-card-beyond" aria-label="Truist Enjoy Beyond Visa Credit Card">
+                    <div class="cc-card-logo">TRUIST <span>&#9783;</span></div>
+                    <div class="cc-card-chip"></div>
+                    <div class="cc-card-name">Enjoy Beyond</div>
+                    <div class="cc-card-visa">VISA</div>
+                </div>
+                <button class="cc-rates-link" onclick={navigateToRates} aria-label="See rates, fees and rewards for Enjoy Beyond">
+                    See rates, fees &amp; rewards
+                </button>
+            </div>
+
+            <!-- Card details -->
+            <div class="cc-card-details">
+                <h4 class="cc-card-title">Enjoy Beyond credit card</h4>
+
+                <div class="cc-two-col">
+                    <!-- Rewards column -->
+                    <div>
+                        <p class="cc-col-header">Rewards</p>
+                        <ul class="cc-list">
+                            <li><strong>3x points</strong> per $1 spent on airfare, hotels, and car rentals</li>
+                            <li><strong>2x points</strong> per $1 spent on dining</li>
+                            <li><strong>1x points</strong> per $1 spent on all other eligible purchases</li>
+                        </ul>
+                    </div>
+
+                    <!-- Details column -->
+                    <div>
+                        <p class="cc-col-header">Details</p>
+                        <ul class="cc-list">
+                            <li><strong>30,000 bonus points</strong> after you spend <strong>$1,500 on purchases in first 90 days</strong> after account opening</li>
+                            <li><strong>18.74% – 27.74% variable APR</strong> on purchases and balance transfers</li>
+                            <li><strong>$95</strong> annual fee</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- CTA buttons -->
+                <div class="cc-cta-row">
+                    <lightning-button
+                        variant="brand"
+                        label="Apply now"
+                        onclick={navigateToApply}
+                        class="cc-btn-apply"
+                    ></lightning-button>
+                    <lightning-button
+                        variant="neutral"
+                        label="Learn more"
+                        onclick={navigateToLearnMore}
+                        class="cc-btn-learn"
+                    ></lightning-button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</template>

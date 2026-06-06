@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Generates a concise customer-facing summary of a Truist Knowledge Article. Use this action when you need to present Knowledge content in a conversational, easy-to-read format. Pass the article title and body text retrieved via Search Knowledge.</description>
+    <masterLabel>Summarize Knowledge Article</masterLabel>
+    <functionType>EinsteinGptPromptTemplateGenerateText</functionType>
+    <inputs>
+        <apiName>ArticleTitle</apiName>
+        <definition>The title of the Knowledge Article to summarize.</definition>
+        <masterLabel>Article Title</masterLabel>
+        <required>true</required>
+        <dataType>Text</dataType>
+        <maxLength>255</maxLength>
+    </inputs>
+    <inputs>
+        <apiName>ArticleBody</apiName>
+        <definition>The full or partial body of the Knowledge Article to summarize. Recommended: up to 3000 characters for best output quality.</definition>
+        <masterLabel>Article Body</masterLabel>
+        <required>true</required>
+        <dataType>Text</dataType>
+        <maxLength>4000</maxLength>
+    </inputs>
+    <outputs>
+        <apiName>ArticleSummary</apiName>
+        <definition>The generated 150–250 word customer-facing summary of the Knowledge Article.</definition>
+        <masterLabel>Article Summary</masterLabel>
+        <dataType>Text</dataType>
+    </outputs>
+    <promptTemplateDeveloperName>Truist_KnowledgeSummary_Generator</promptTemplateDeveloperName>
+</GenAiFunction>

@@ -1,0 +1,205 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'SalesforceSans',sans-serif;}
+.hub{padding:1.5rem 1rem;background:var(--color-background-primary);}
+.hub-title{text-align:center;font-size:1.3rem;font-weight:400;color:var(--color-text-primary);margin-bottom:1.5rem;}
+.nav-wrapper{display:flex;align-items:center;gap:4px;}
+.scroll-btn{width:32px;height:32px;border-radius:50%;border:none;background:#5a3fc0;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;}
+.scroll-btn:disabled{opacity:0.3;cursor:default;}
+.track{display:flex;gap:8px;overflow-x:auto;flex:1;scrollbar-width:none;padding:6px 2px;}
+.track::-webkit-scrollbar{display:none;}
+.nav-item{display:flex;flex-direction:column;align-items:center;gap:6px;min-width:90px;padding:12px 8px;border:2px solid transparent;border-radius:8px;background:transparent;cursor:pointer;flex-shrink:0;transition:all 0.15s ease;}
+.nav-item:hover{background:rgba(90,63,192,0.06);border-color:#5a3fc0;}
+.nav-item.active{border-color:#5a3fc0;background:rgba(90,63,192,0.08);}
+.nav-item.active .nav-label{color:#5a3fc0;font-weight:500;}
+.nav-icon{width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--color-text-secondary);}
+.nav-item.active .nav-icon{color:#5a3fc0;}
+.nav-label{font-size:11px;font-weight:500;color:var(--color-text-primary);text-align:center;line-height:1.3;}
+.divider{border:none;border-top:0.5px solid var(--color-border-tertiary);margin:1.5rem 0;}
+
+.panel{padding:0.5rem 0;}
+.panel-title{font-size:1.1rem;font-weight:400;color:var(--color-text-primary);margin-bottom:0.5rem;}
+.card-row{display:flex;gap:1.5rem;flex-wrap:wrap;align-items:flex-start;margin-top:1rem;}
+.card-mock{width:180px;height:110px;border-radius:10px;background:linear-gradient(135deg,#2a2a2a,#4a4a4a);padding:12px;display:flex;flex-direction:column;justify-content:space-between;flex-shrink:0;}
+.card-brand{font-size:9px;font-weight:700;color:#fff;letter-spacing:0.05em;}
+.card-chip{width:20px;height:14px;background:linear-gradient(135deg,#c9a227,#f0d060);border-radius:2px;}
+.card-bottom{display:flex;justify-content:space-between;align-items:flex-end;}
+.card-name{font-size:8px;color:rgba(255,255,255,0.6);}
+.card-visa{font-size:13px;font-weight:900;font-style:italic;color:#fff;}
+.card-details{flex:1;min-width:220px;}
+.card-title{font-size:1rem;font-weight:500;color:var(--color-text-primary);margin-bottom:0.75rem;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:0.75rem;}
+.col-head{font-size:12px;font-weight:500;color:var(--color-text-primary);margin-bottom:4px;}
+.reward-list{list-style:disc;padding-left:1rem;}
+.reward-list li{font-size:12px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:2px;}
+.cta-row{display:flex;gap:8px;margin-top:0.75rem;}
+.btn-apply{background:#5a3fc0;color:#fff;border:none;padding:8px 18px;border-radius:6px;font-size:13px;font-weight:500;cursor:pointer;}
+.btn-learn{background:transparent;color:#5a3fc0;border:1.5px solid #5a3fc0;padding:8px 18px;border-radius:6px;font-size:13px;font-weight:500;cursor:pointer;}
+.rates-link{font-size:11px;color:#5a3fc0;text-decoration:underline;background:none;border:none;cursor:pointer;padding:0;margin-top:4px;}
+
+.cs-panel{padding:0.5rem 0;}
+.cs-hero{background:linear-gradient(135deg,#2a1f5e,#5a3fc0);border-radius:10px;padding:1.25rem;color:#fff;margin-bottom:1rem;}
+.cs-hero h3{font-size:1.1rem;font-weight:500;margin-bottom:0.4rem;}
+.cs-hero p{font-size:12px;line-height:1.6;opacity:0.85;margin-bottom:0.75rem;}
+.cs-btn{background:#fff;color:#5a3fc0;border:none;padding:8px 18px;border-radius:6px;font-size:13px;font-weight:500;cursor:pointer;display:inline-block;}
+.factor-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:0.75rem;}
+.factor{background:var(--color-background-secondary);border-left:3px solid #5a3fc0;border-radius:6px;padding:10px 12px;}
+.factor-pct{font-size:1.2rem;font-weight:500;color:#5a3fc0;}
+.factor-name{font-size:11px;color:var(--color-text-secondary);margin-top:2px;}
+</style>
+
+<h2 class="sr-only">Truist Financial Services Hub — interactive navigation preview</h2>
+
+<div class="hub">
+  <p class="hub-title">What can we help you with?</p>
+
+  <div class="nav-wrapper">
+    <button class="scroll-btn" id="left-btn" onclick="scrollTrack(-1)" aria-label="Scroll left" disabled>
+      <i class="ti ti-chevron-left" aria-hidden="true"></i>
+    </button>
+
+    <div class="track" id="track">
+      <button class="nav-item" data-id="checking" onclick="activate(this,'checking')">
+        <span class="nav-icon"><i class="ti ti-wallet" aria-hidden="true"></i></span>
+        <span class="nav-label">Checking</span>
+      </button>
+      <button class="nav-item" data-id="savings" onclick="activate(this,'savings')">
+        <span class="nav-icon"><i class="ti ti-piggy-bank" aria-hidden="true"></i></span>
+        <span class="nav-label">Savings</span>
+      </button>
+      <button class="nav-item active" data-id="creditCard" onclick="activate(this,'creditCard')">
+        <span class="nav-icon"><i class="ti ti-credit-card" aria-hidden="true"></i></span>
+        <span class="nav-label">Credit Card</span>
+      </button>
+      <button class="nav-item" data-id="smallBusiness" onclick="activate(this,'smallBusiness')">
+        <span class="nav-icon"><i class="ti ti-building-store" aria-hidden="true"></i></span>
+        <span class="nav-label">Small Business</span>
+      </button>
+      <button class="nav-item" data-id="loans" onclick="activate(this,'loans')">
+        <span class="nav-icon"><i class="ti ti-currency-dollar" aria-hidden="true"></i></span>
+        <span class="nav-label">Loans</span>
+      </button>
+      <button class="nav-item" data-id="mortgage" onclick="activate(this,'mortgage')">
+        <span class="nav-icon"><i class="ti ti-home" aria-hidden="true"></i></span>
+        <span class="nav-label">Mortgage</span>
+      </button>
+      <button class="nav-item" data-id="premier" onclick="activate(this,'premier')">
+        <span class="nav-icon"><i class="ti ti-users" aria-hidden="true"></i></span>
+        <span class="nav-label">Premier Banking</span>
+      </button>
+      <button class="nav-item" data-id="creditScore" onclick="activate(this,'creditScore')">
+        <span class="nav-icon"><i class="ti ti-chart-line" aria-hidden="true"></i></span>
+        <span class="nav-label">Help with Credit Score</span>
+      </button>
+    </div>
+
+    <button class="scroll-btn" id="right-btn" onclick="scrollTrack(1)" aria-label="Scroll right">
+      <i class="ti ti-chevron-right" aria-hidden="true"></i>
+    </button>
+  </div>
+
+  <hr class="divider">
+
+  <div id="content-panel">
+
+    <div id="panel-creditCard" class="panel">
+      <p class="panel-title">Find your card for every day.</p>
+      <hr style="border:none;border-top:0.5px solid var(--color-border-tertiary);margin:0.5rem 0 1rem;">
+      <div class="card-row">
+        <div>
+          <div class="card-mock">
+            <div class="card-brand">TRUIST &#9783;</div>
+            <div class="card-chip"></div>
+            <div class="card-bottom">
+              <span class="card-name">Enjoy Beyond</span>
+              <span class="card-visa">VISA</span>
+            </div>
+          </div>
+          <button class="rates-link">See rates, fees &amp; rewards</button>
+        </div>
+        <div class="card-details">
+          <p class="card-title">Enjoy Beyond credit card</p>
+          <div class="two-col">
+            <div>
+              <p class="col-head">Rewards</p>
+              <ul class="reward-list">
+                <li><strong>3x points</strong> airfare, hotels, car rentals</li>
+                <li><strong>2x points</strong> on dining</li>
+                <li><strong>1x points</strong> all other purchases</li>
+              </ul>
+            </div>
+            <div>
+              <p class="col-head">Details</p>
+              <ul class="reward-list">
+                <li><strong>30,000 bonus pts</strong> after $1,500 in 90 days</li>
+                <li><strong>18.74%–27.74%</strong> variable APR</li>
+                <li><strong>$95</strong> annual fee</li>
+              </ul>
+            </div>
+          </div>
+          <div class="cta-row">
+            <button class="btn-apply">Apply now</button>
+            <button class="btn-learn" onclick="sendPrompt('Tell me more about the Truist Enjoy Beyond credit card')">Learn more ↗</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="panel-creditScore" class="panel" style="display:none;">
+      <div class="cs-hero">
+        <h3>Understanding your credit score</h3>
+        <p>Your credit score is a three-digit number (300–850) that lenders use to evaluate how reliably you manage debt. The higher your score, the better rates you'll receive.</p>
+        <button class="cs-btn" onclick="sendPrompt('Explain how to improve my credit score')">Learn more ↗</button>
+      </div>
+      <p style="font-size:13px;font-weight:500;color:var(--color-text-primary);margin-bottom:8px;">The 5 factors that determine your score</p>
+      <div class="factor-grid">
+        <div class="factor"><div class="factor-pct">35%</div><div class="factor-name">Payment history</div></div>
+        <div class="factor"><div class="factor-pct">30%</div><div class="factor-name">Credit utilization</div></div>
+        <div class="factor"><div class="factor-pct">15%</div><div class="factor-name">Length of history</div></div>
+        <div class="factor"><div class="factor-pct">10%</div><div class="factor-name">Credit mix</div></div>
+        <div class="factor"><div class="factor-pct">10%</div><div class="factor-name">New credit</div></div>
+      </div>
+    </div>
+
+    <div id="panel-default" style="display:none;text-align:center;padding:2rem;color:var(--color-text-secondary);font-size:14px;">
+      Select a category above to get started.
+    </div>
+
+  </div>
+</div>
+
+<script>
+const panels = {
+  creditCard: 'panel-creditCard',
+  creditScore: 'panel-creditScore'
+};
+
+function activate(el, id) {
+  document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+
+  document.querySelectorAll('.panel, #panel-default').forEach(p => p.style.display = 'none');
+
+  if (panels[id]) {
+    document.getElementById(panels[id]).style.display = 'block';
+  } else {
+    document.getElementById('panel-default').style.display = 'block';
+  }
+}
+
+function scrollTrack(dir) {
+  const track = document.getElementById('track');
+  track.scrollBy({ left: dir * 220, behavior: 'smooth' });
+  setTimeout(updateBtns, 300);
+}
+
+function updateBtns() {
+  const track = document.getElementById('track');
+  document.getElementById('left-btn').disabled = track.scrollLeft < 4;
+  document.getElementById('right-btn').disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+}
+
+document.getElementById('track').addEventListener('scroll', updateBtns);
+updateBtns();
+</script>

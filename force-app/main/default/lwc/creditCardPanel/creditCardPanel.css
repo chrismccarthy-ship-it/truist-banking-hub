@@ -1,0 +1,148 @@
+/* Credit Card Panel — no internal lwc tokens */
+:host { display: block; }
+
+.cc-panel {
+    padding: 0.5rem 0;
+}
+
+.cc-section-title {
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: #181818;
+    margin: 0 0 0.5rem;
+}
+
+.cc-divider {
+    border: none;
+    border-top: 1px solid #dddbda;
+    margin: 0 0 1rem;
+}
+
+/* ── Card row layout ── */
+.cc-card-row {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+/* ── Mock card visual ── */
+.cc-card-image-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    flex-shrink: 0;
+}
+
+.cc-card-mock {
+    width: 200px;
+    height: 126px;
+    border-radius: 10px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+}
+
+.cc-card-beyond {
+    background: linear-gradient(135deg, #2a2a2a 0%, #4a4a4a 100%);
+    color: #fff;
+}
+
+.cc-card-logo {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: #fff;
+}
+
+.cc-card-chip {
+    width: 24px;
+    height: 18px;
+    background: linear-gradient(135deg, #c9a227 0%, #f0d060 100%);
+    border-radius: 3px;
+}
+
+.cc-card-name {
+    font-size: 0.6rem;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 0.04em;
+    text-align: right;
+}
+
+.cc-card-visa {
+    font-size: 1rem;
+    font-weight: 900;
+    font-style: italic;
+    color: #fff;
+    text-align: right;
+    letter-spacing: 0.02em;
+}
+
+.cc-rates-link {
+    background: none;
+    border: none;
+    color: #5a3fc0;
+    font-size: 0.75rem;
+    cursor: pointer;
+    padding: 0;
+    text-decoration: underline;
+}
+
+.cc-rates-link:hover { color: #3d2a8a; }
+
+/* ── Details ── */
+.cc-card-details {
+    flex: 1;
+    min-width: 280px;
+}
+
+.cc-card-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #181818;
+    margin: 0 0 0.75rem;
+}
+
+.cc-two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.cc-col-header {
+    font-weight: 700;
+    font-size: 0.875rem;
+    color: #181818;
+    margin: 0 0 0.4rem;
+}
+
+.cc-list {
+    list-style: disc;
+    padding-left: 1.1rem;
+    margin: 0;
+}
+
+.cc-list li {
+    font-size: 0.75rem;
+    color: #181818;
+    line-height: 1.6;
+    margin-bottom: 0.25rem;
+}
+
+/* ── CTA ── */
+.cc-cta-row {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+@media (max-width: 560px) {
+    .cc-card-row { flex-direction: column; }
+    .cc-two-col { grid-template-columns: 1fr; }
+}

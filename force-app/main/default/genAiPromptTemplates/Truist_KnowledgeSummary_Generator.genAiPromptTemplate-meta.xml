@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPromptTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Generates a concise, customer-friendly summary of a Truist Knowledge Article for use in chat responses or Agentforce actions. Supports dynamic Knowledge summaries for credit card articles.</description>
+    <developerName>Truist_KnowledgeSummary_Generator</developerName>
+    <masterLabel>Truist Knowledge Article Summarizer</masterLabel>
+    <templateVersions>
+        <content><![CDATA[You are a knowledgeable Truist content assistant. Your task is to produce a clear, concise, customer-facing summary of a Truist Knowledge Article.
+
+**Article Title:**
+{!$Input:ArticleTitle}
+
+**Full Article Body:**
+{!$Input:ArticleBody}
+
+**Instructions:**
+1. Summarize the article in 150–250 words for a general banking customer audience.
+2. Lead with the single most important piece of information (the core value or key takeaway).
+3. Use plain English — avoid jargon unless it's standard financial terminology a customer would recognize.
+4. Preserve all specific numbers: rates, fees, point multipliers, credit amounts, and time periods exactly as written.
+5. End with one clear next-step sentence (e.g., "Learn more or apply at truist.com/credit-cards/enjoy-beyond").
+6. Do NOT add information not present in the article body.
+7. Do NOT include legal disclaimers in the summary — the calling system will append them.
+8. Format: one or two short paragraphs. No headers. No bullet points.]]></content>
+        <inputs>
+            <apiName>ArticleTitle</apiName>
+            <definition>The title of the Knowledge Article being summarized (e.g., "Truist Enjoy Beyond Credit Card").</definition>
+            <masterLabel>Article Title</masterLabel>
+            <referenceName>Input:ArticleTitle</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>ArticleBody</apiName>
+            <definition>The full or partial body text of the Knowledge Article. Up to 3000 characters recommended for best results.</definition>
+            <masterLabel>Article Body</masterLabel>
+            <referenceName>Input:ArticleBody</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryIntentDeveloperName>Truist_KnowledgeSummary_Generator</primaryIntentDeveloperName>
+        <status>Published</status>
+        <title>Truist Knowledge Article Summarizer v1.0</title>
+        <type>einstein_gpt__flex</type>
+        <variableType>
+            <doorstepType>Text</doorstepType>
+            <type>DataType</type>
+        </variableType>
+    </templateVersions>
+    <type>einstein_gpt__flex</type>
+    <visibility>Global</visibility>
+</GenAiPromptTemplate>

@@ -1,0 +1,65 @@
+﻿<template>
+    <div class="hub-container">
+        <h2 class="hub-title">What can we help you with?</h2>
+
+        <div class="hub-nav-wrapper">
+            <!-- Scroll Left -->
+            <button
+                class="hub-scroll-btn hub-scroll-left"
+                onclick={scrollLeft}
+                aria-label="Scroll left"
+                disabled={isAtStart}
+            >
+                <lightning-icon icon-name="utility:chevronleft" size="x-small"></lightning-icon>
+            </button>
+
+            <!-- Scrollable Track -->
+            <div class="hub-track" onscroll={handleScroll} data-id="track">
+                <template for:each={navItems} for:item="item">
+                    <button
+                        key={item.id}
+                        class={item.cssClass}
+                        data-id={item.id}
+                        onclick={handleNavClick}
+                        aria-pressed={item.isActive}
+                        aria-label={item.label}
+                    >
+                        <span class="hub-icon-wrap" aria-hidden="true">
+                            <lightning-icon
+                                icon-name={item.icon}
+                                size="small"
+                                class="hub-icon"
+                            ></lightning-icon>
+                        </span>
+                        <span class="hub-label">{item.label}</span>
+                    </button>
+                </template>
+            </div>
+
+            <!-- Scroll Right -->
+            <button
+                class="hub-scroll-btn hub-scroll-right"
+                onclick={scrollRight}
+                aria-label="Scroll right"
+                disabled={isAtEnd}
+            >
+                <lightning-icon icon-name="utility:chevronright" size="x-small"></lightning-icon>
+            </button>
+        </div>
+
+        <!-- Dynamic Content Panel -->
+        <div class="hub-content-panel" role="region" aria-live="polite">
+            <template if:true={showCreditScore}>
+                <c-credit-score-panel></c-credit-score-panel>
+            </template>
+            <template if:true={showCreditCard}>
+                <c-credit-card-panel></c-credit-card-panel>
+            </template>
+            <template if:true={showDefault}>
+                <div class="hub-placeholder">
+                    <p>Select a category above to get started.</p>
+                </div>
+            </template>
+        </div>
+    </div>
+</template>
