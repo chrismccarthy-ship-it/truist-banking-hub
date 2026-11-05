@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Agentforce action wrapping Option A (the Apex invocable action).
+
+  Unlike the prompt-template-backed functions in this folder, this function is
+  Apex-invocable-backed: invocationTargetType is 'apex' and invocationTarget is
+  the @InvocableMethod label 'Payment Gateway Action' (PaymentGatewayAction.cls).
+-->
+<GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Runs a payment gateway operation on behalf of the customer. Use this action to charge a payment method, refund a prior transaction, check the status of a transaction, or list transactions with paging. Set the operation input to one of: charge, refund, status, or list-transactions-with-paging, and provide the fields that operation needs (for example amount and currency for a charge, or transactionId for a refund or status check). Errors are returned as data with an error message rather than failing the conversation.</description>
+    <masterLabel>Payment Gateway Action</masterLabel>
+    <invocationTarget>Payment Gateway Action</invocationTarget>
+    <invocationTargetType>apex</invocationTargetType>
+</GenAiFunction>

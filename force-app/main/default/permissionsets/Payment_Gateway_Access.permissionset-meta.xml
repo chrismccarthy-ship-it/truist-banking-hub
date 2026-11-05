@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Payment Gateway Access permission set.
+
+  Grants:
+    - access to the External Credential principal (PaymentGatewayPrincipal) so
+      assigned users' callouts can authenticate to the gateway, and
+    - Apex class access to the payment gateway integration classes.
+
+  Assign this to any user, integration user, or Automated Process / Agentforce
+  user that must run the invocable action or call the REST resource.
+-->
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>Payment Gateway Access</label>
+    <description>Access to the Payment Gateway External Credential principal and the payment gateway Apex integration classes.</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <externalCredentialPrincipalAccesses>
+        <enabled>true</enabled>
+        <externalCredentialPrincipal>Payment_Gateway-PaymentGatewayPrincipal</externalCredentialPrincipal>
+    </externalCredentialPrincipalAccesses>
+    <classAccesses>
+        <apexClass>PaymentGatewayDTO</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>PaymentGatewayService</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>PaymentGatewayAction</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>PaymentGatewayResource</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+</PermissionSet>
